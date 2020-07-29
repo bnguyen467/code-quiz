@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="./assets/reset.css">
+    <link rel="stylesheet" href="./assets/style.css">
+
+    <title>Code Quiz</title>
+</head>
+<body>
+    <section class="container">
+        <div>
+            <nav>
+                <p id="highScore">View Highscores</p>
+                <p id="time">Time: <span id="timeCount">100</span></p>
+            </nav>
+
+            <h1>Coding Quiz Challenge</h1>
+
+            <article id="instruction" class="bodyText">
+                <p>Try to answer the following code-related questions within the time limit. Keep in mind that incorrect answers will penalize your scoretime by ten seconds.</p>
+                <p>Note that you cannot go back to the previous questions.</p>
+                <p>If you click the next button without answering the question, you will receive no point and the time won't be reduced.</p>
+            </article>
+
+            <article id="finishQuiz" class="bodyText hide">
+                <h1>You Are Done!!</h1>
+                <p>Score: <span id="finalScore">0</span></p>
+                <p>Remaining Time: <span id="remainTime">0</span> seconds</p>
+
+                <form class="bodyText">
+                    <label for="userName">Enter you name: </label>
+                    <input type="text" id="userName" name="userName">
+                </form>
+
+            </article>
+
+            <div id="questionDisplay" class="bodyText hide">
+                <div id="question" class="alignLeft">Questions go here</div>
+                    <div id="answer">
+                        <!-- <button class="answerButton">answer1</button>
+                        <button class="answerButton">answer2</button>
+                        <button class="answerButton">answer3</button>
+                        <button class="answerButton">answer4</button> -->
+                    </div>
+            </div>
+
+            <hr>
+
+            <!-- Show score during quiz -->
+            <div id="showScore" class="bodyText alignLeft hide">Score: <span id="score">0</span>/10</div>
+
+            <!-- Tell the user if they chose right or wrong answer -->
+            <div id="showResult" class="bodyText alignLeft hide">Result shows here</div>
+            <br>
+
+            <button id="startBtn" class="btn">Start</button>
+            <button id="nextBtn" class="btn hide">Next</button>
+            <button id="submitBtn" class="btn hide">Submit</button>
+        </div>
+    </section>
+
+
+
+    <script src="./assets/script.js"></script>
+</body>
+</html>
