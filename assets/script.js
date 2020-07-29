@@ -114,6 +114,7 @@ const userName = document.getElementById('userName');
 // Declare global variables current question, score, second, time
 let currentIndex, score, second, time;
 
+
 // When start button is clicked
 startButton.addEventListener('click', startQuiz);
 
@@ -121,7 +122,19 @@ startButton.addEventListener('click', startQuiz);
 nextButton.addEventListener('click', nextQuestion);
 
 // When submit button is clicked
-submitButton.addEventListener('click', submitScore);
+submitButton.addEventListener('click', function(){
+    event.preventDefault();
+    // Passing an objective of score and time to submitScore function
+    submitScore({
+        Username: userName,
+        Score: score,
+        RemainingTime: time 
+    })
+
+    // Back to home screen 
+    instruction.classList.remove('hide');
+    startButton.classList.remove('hide');
+});
 
 function nextQuestion()
 {
@@ -245,11 +258,25 @@ function endQuiz()
     finalScore.textContent = score;
     remainTime.textContent = second;
 
-    event.preventDefault();
+    // event.preventDefault();
+
 }
 
 // When submit button is clicked, score is submited
-submitScore()
+function submitScore(submission)
 {
-    event.preventDefault();
+    // Get the array from the storage, set to empty array if there is nothing
+    let leaderBoard = JSON.parse(localStorage.getItem('leaderBoard')) || [];
+    
+    // Add new input user name and info. to array
+    leaderBoard.push(submission);
+    
+    // Put into storage
+    localStorage.setItem('leaderBoard', JSON.stringify(leaderBoard));
+
+    // Sort the array by score
+    leaderBoard.sort(function(a, b){
+        return b.score - a.score;
+    });
 }
+

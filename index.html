@@ -19,34 +19,35 @@
 
             <h1>Coding Quiz Challenge</h1>
 
-            <article id="instruction" class="bodyText">
+            <!-- Instruction on homescreen -->
+            <article id="instruction" class="bodyText hide">
                 <p>Try to answer the following code-related questions within the time limit. Keep in mind that incorrect answers will penalize your scoretime by ten seconds.</p>
                 <p>Note that you cannot go back to the previous questions.</p>
                 <p>If you click the next button without answering the question, you will receive no point and the time won't be reduced.</p>
             </article>
 
+            <!-- Display Questions -->
+            <div id="questionDisplay" class="bodyText hide">
+                <div id="question" class="alignLeft">Questions go here</div>
+                    <div id="answer">
+                    </div>
+            </div>
+
+            <!-- Submit form when quiz is Done -->
             <article id="finishQuiz" class="bodyText hide">
                 <h1>You Are Done!!</h1>
                 <p>Score: <span id="finalScore">0</span></p>
                 <p>Remaining Time: <span id="remainTime">0</span> seconds</p>
 
                 <form class="bodyText">
-                    <label for="userName">Enter you name: </label>
+                    <label for="userName">Enter your initials: </label>
                     <input type="text" id="userName" name="userName">
                 </form>
 
             </article>
 
-            <div id="questionDisplay" class="bodyText hide">
-                <div id="question" class="alignLeft">Questions go here</div>
-                    <div id="answer">
-                        <!-- <button class="answerButton">answer1</button>
-                        <button class="answerButton">answer2</button>
-                        <button class="answerButton">answer3</button>
-                        <button class="answerButton">answer4</button> -->
-                    </div>
-            </div>
-
+            <!-- Leader Board after submission -->
+            
             <hr>
 
             <!-- Show score during quiz -->
