@@ -126,7 +126,7 @@ submitButton.addEventListener('click', function(){
     event.preventDefault();
     // Passing an objective of score and time to submitScore function
     submitScore({
-        Username: userName,
+        Username: userName.value,
         Score: score,
         RemainingTime: time 
     })
@@ -278,5 +278,35 @@ function submitScore(submission)
     leaderBoard.sort(function(a, b){
         return b.score - a.score;
     });
+
+    let tableElem = document.createElement('table')
+    tableElem.className = 'table'
+    tableElem.innerHTML = `
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">User Name</th>
+          <th scope="col">Score</th>
+          <th scope="col">Remaining Time</th>
+        </tr>
+      </thead>
+    `
+  
+    let bodyElem = document.createElement('tbody')
+  
+    for (let i = 0; i < leaderBoard.length; i++) {
+      let rowElem = document.createElement('tr')
+      rowElem.innerHTML = `
+        <th scope="row">${i + 1}</th>
+        <td>${leaderBoard[i].Username}</td>
+        <td>${leaderBoard[i].Score}</td>
+        <td>${leaderBoard[i].RemainingTime}</td>
+      `
+      bodyElem.append(rowElem)
+    }
+
+    tableElem.append(bodyElem)
+
+    document.getElementById('container').append(tableElem)
 }
 
