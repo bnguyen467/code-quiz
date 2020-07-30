@@ -96,6 +96,7 @@ const question = [
 const startButton = document.getElementById("startBtn");
 const nextButton = document.getElementById("nextBtn");
 const submitButton = document.getElementById("submitBtn");
+const homeButton = document.getElementById("homeBtn");
 
 // Instruction, questionDisplay, questions, showscore, score, answers, result, time, finish quiz, final score, remaining time, user name
 const instruction = document.getElementById("instruction");
@@ -112,7 +113,8 @@ const remainTime = document.getElementById('remainTime');
 const userName = document.getElementById('userName');
 
 // Declare global variables current question, score, second, time
-let currentIndex, score, second, time;
+let currentIndex, score, second, time; 
+let tableElem = document.createElement('table');
 
 
 // When start button is clicked
@@ -124,17 +126,33 @@ nextButton.addEventListener('click', nextQuestion);
 // When submit button is clicked
 submitButton.addEventListener('click', function(){
     event.preventDefault();
+
+    // Replace submit button by home button
+    submitButton.classList.add('hide');
+    homeButton.classList.remove('hide');
     // Passing an objective of score and time to submitScore function
     submitScore({
         Username: userName.value,
         Score: score,
-        RemainingTime: time 
+        RemainingTime: second 
     })
-
-    // Back to home screen 
-    instruction.classList.remove('hide');
-    startButton.classList.remove('hide');
 });
+
+// When home button is clicked
+homeButton.addEventListener('click', function(){
+    // Show start button and instruction again
+    startButton.classList.remove('hide');
+    instruction.classList.remove('hide');
+
+    // Hide home button and score board
+    homeButton.classList.add('hide');
+    finishQuiz.classList.add('hide');
+
+    // Remove the leader board
+    tableElem.parentNode.removeChild(tableElem);
+    
+    resetQuestionBody();
+})
 
 function nextQuestion()
 {
@@ -257,9 +275,6 @@ function endQuiz()
     // Output final score and time
     finalScore.textContent = score;
     remainTime.textContent = second;
-
-    // event.preventDefault();
-
 }
 
 // When submit button is clicked, score is submited
@@ -279,34 +294,37 @@ function submitScore(submission)
         return b.score - a.score;
     });
 
-    let tableElem = document.createElement('table')
-    tableElem.className = 'table'
+    // Create a table to display leader board
+
+
+    // tableElem = document.createElement('table');
+    tableElem.classList.add('customTable');
     tableElem.innerHTML = `
-      <thead>
+      <thead class="bodyText tableHead">
         <tr>
           <th scope="col">#</th>
-          <th scope="col">User Name</th>
+          <th scope="col">Name</th>
           <th scope="col">Score</th>
-          <th scope="col">Remaining Time</th>
+          <th scope="col">Time Left</th>
         </tr>
       </thead>
-    `
+    `;
   
-    let bodyElem = document.createElement('tbody')
-  
+    let bodyElem = document.createElement('tbody');
+    bodyElem.classList.add('customTable');
     for (let i = 0; i < leaderBoard.length; i++) {
       let rowElem = document.createElement('tr')
       rowElem.innerHTML = `
         <th scope="row">${i + 1}</th>
         <td>${leaderBoard[i].Username}</td>
         <td>${leaderBoard[i].Score}</td>
-        <td>${leaderBoard[i].RemainingTime}</td>
-      `
-      bodyElem.append(rowElem)
+        <td>${leaderBoard[i].RemainingTime}s</td>
+      `;
+      bodyElem.append(rowElem);
     }
 
-    tableElem.append(bodyElem)
+    tableElem.append(bodyElem);
 
-    document.getElementById('container').append(tableElem)
+    document.getElementById('container').append(tableElem);
 }
 
