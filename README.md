@@ -15,3 +15,4 @@
 - You can do the quiz again by clicking the "Back to Home Screen" button.
 
 Website link: https://bnguyen467.github.io/code-quiz/
+![alt text](https://github.com/bnguyen467/code-quiz/blob/master/assets/images/homescreen.png)
