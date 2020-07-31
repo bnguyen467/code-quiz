@@ -6,12 +6,12 @@
 - Everytime you get an incorrect answer, the time will be reduced by 10 seconds.
 - You can click on "Next" button to go to next question without answering, you will receive 0 point and the time will not be reduced. 
 - You cannot go back to the previous question.
+- You will know you get the right or wrong answer after choosing an answer.
 - After finishing 10th question,it will show: 
   - Your score on the scale of 10.
   - The remaining time you have.
   - Ask you to enter your name.
-- When you have submitted your name and score, a leader board will be displayed.
-  - The highest score will be at the first place, and so on.
+- When you have submitted your name and score, a board with names, scores, and times of other users that done the quiz before will show up.
 - You can do the quiz again by clicking the "Back to Home Screen" button.
 
-[I'm an inline-style link](https://bnguyen467.github.io/code-quiz/)
+Website link: https://bnguyen467.github.io/code-quiz/
