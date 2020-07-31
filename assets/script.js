@@ -151,6 +151,10 @@ homeButton.addEventListener('click', function(){
     // Remove the leader board
     tableElem.parentNode.removeChild(tableElem);
     
+    // Make sure time is back to 100 when play again
+    second = 100;
+    timeElement.textContent = second;
+
     resetQuestionBody();
 })
 
@@ -182,6 +186,10 @@ function startQuiz()
     currentIndex = 0;
     score = 0;
     second = 100;
+
+    // Make sure score is back to 0 start again
+    scoreElement.innerHTML = score;
+    
 
     // Call next question function
     showQuestion();
